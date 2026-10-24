@@ -621,5 +621,12 @@
     "status": "published",
     "publish_id": "v_inbox_file~v2.7700166931097258006",
     "last_error": null
+  },
+  {
+    "time": "2026-10-24T13:25:12+02:00",
+    "video": "queue/videos/roquefort.mp4",
+    "status": "published",
+    "publish_id": "v_inbox_file~v2.7700193755508738071",
+    "last_error": null
   }
 ]

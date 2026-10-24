@@ -1025,6 +1025,11 @@
     "video": "queue/videos/roquefort.mp4",
     "caption": "🔤 MOT MYSTÈRE niveau impossible : 3 indices pour trouver ce trésor français. Tu l'as trouvé ? 👇 #motmystere #quiz #france #enigme #culturegenerale #fromage #pourtoi",
     "privacy": "SELF_ONLY",
-    "mode": "draft"
+    "mode": "draft",
+    "status": "published",
+    "publish_id": "v_inbox_file~v2.7700193755508738071",
+    "result": "SEND_TO_USER_INBOX",
+    "video_deleted": true,
+    "updated_at": "2026-10-24T11:25:23.196380+00:00"
   }
 ]
