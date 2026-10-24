@@ -635,5 +635,12 @@
     "status": "published",
     "publish_id": "v_inbox_file~v2.7700226246382749718",
     "last_error": null
+  },
+  {
+    "time": "2026-10-24T17:31:14+02:00",
+    "video": "queue/videos/intrus-2026-10-24-18.mp4",
+    "status": "published",
+    "publish_id": "v_inbox_file~v2.7700257350791366678",
+    "last_error": null
   }
 ]
