@@ -628,5 +628,12 @@
     "status": "published",
     "publish_id": "v_inbox_file~v2.7700193755508738071",
     "last_error": null
+  },
+  {
+    "time": "2026-10-24T15:30:44+02:00",
+    "video": "queue/videos/football.mp4",
+    "status": "published",
+    "publish_id": "v_inbox_file~v2.7700226246382749718",
+    "last_error": null
   }
 ]

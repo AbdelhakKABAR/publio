@@ -1037,6 +1037,11 @@
     "video": "queue/videos/football.mp4",
     "caption": "⚽ Quiz Football : 10 questions, du niveau facile à impossible. Tu arrives jusqu'où ? Donne ton score en commentaire 👇 #quiz #quiztime #football #foot #monde #culturegenerale #question #defi",
     "privacy": "SELF_ONLY",
-    "mode": "draft"
+    "mode": "draft",
+    "status": "published",
+    "publish_id": "v_inbox_file~v2.7700226246382749718",
+    "result": "SEND_TO_USER_INBOX",
+    "video_deleted": true,
+    "updated_at": "2026-10-24T13:30:57.528557+00:00"
   }
 ]
