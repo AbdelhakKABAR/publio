@@ -1043,5 +1043,12 @@
     "result": "SEND_TO_USER_INBOX",
     "video_deleted": true,
     "updated_at": "2026-10-24T13:30:57.528557+00:00"
+  },
+  {
+    "time": "2026-10-24T17:31:14+02:00",
+    "video": "queue/videos/intrus-2026-10-24-18.mp4",
+    "caption": "🕵️ TROUVE L'INTRUS : 10 questions, du niveau facile à impossible… les pièges arrivent à la fin ! Combien en as-tu trouvé ? 👇 #intrus #quiz #quiztime #piege #culturegenerale #logique #defi #pourtoi",
+    "privacy": "SELF_ONLY",
+    "mode": "draft"
   }
 ]
