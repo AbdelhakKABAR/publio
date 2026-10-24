@@ -642,5 +642,12 @@
     "status": "published",
     "publish_id": "v_inbox_file~v2.7700257350791366678",
     "last_error": null
+  },
+  {
+    "time": "2026-10-24T19:24:41+02:00",
+    "video": "queue/videos/segments.mp4",
+    "status": "published",
+    "publish_id": "v_inbox_file~v2.7700286292344571926",
+    "last_error": null
   }
 ]

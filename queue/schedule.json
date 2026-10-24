@@ -1061,6 +1061,11 @@
     "video": "queue/videos/segments.mp4",
     "caption": "🧩 SUITE LOGIQUE niveau impossible : 6, 2, 5, 5, 4… et ensuite ? Seuls 1 % trouvent ! 👇 #logique #enigme #quiz #suitelogique #cerveau #pourtoi",
     "privacy": "SELF_ONLY",
-    "mode": "draft"
+    "mode": "draft",
+    "status": "published",
+    "publish_id": "v_inbox_file~v2.7700286292344571926",
+    "result": "SEND_TO_USER_INBOX",
+    "video_deleted": true,
+    "updated_at": "2026-10-24T17:24:51.227665+00:00"
   }
 ]
