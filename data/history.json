@@ -600,5 +600,12 @@
     "status": "published",
     "publish_id": "v_inbox_file~v2.7700072993376159766",
     "last_error": null
+  },
+  {
+    "time": "2026-10-24T07:30:39+02:00",
+    "video": "queue/videos/jeux-video.mp4",
+    "status": "published",
+    "publish_id": "v_inbox_file~v2.7700102534144329750",
+    "last_error": null
   }
 ]
