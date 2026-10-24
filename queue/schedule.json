@@ -1001,6 +1001,11 @@
     "video": "queue/videos/plaques.mp4",
     "caption": "🚗 Quiz France : le numéro sur la plaque d'immatriculation, c'est quel département ? Du niveau facile à impossible. Tu arrives jusqu'où ? Donne ton score en commentaire 👇 #quiz #france #departements #plaque #immatriculation #geographie #culturegenerale #quiztime #defi",
     "privacy": "SELF_ONLY",
-    "mode": "draft"
+    "mode": "draft",
+    "status": "published",
+    "publish_id": "v_inbox_file~v2.7700134539058235395",
+    "result": "SEND_TO_USER_INBOX",
+    "video_deleted": true,
+    "updated_at": "2026-10-24T07:36:53.929246+00:00"
   }
 ]
