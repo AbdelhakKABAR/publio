@@ -1,0 +1,34 @@
+name: Connecter TikTok
+
+on:
+  workflow_dispatch:
+    inputs:
+      code:
+        description: "Code affiché sur la page de connexion Publio Studio"
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publio
+  cancel-in-progress: false
+
+jobs:
+  connect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Échanger le code contre les jetons
+        env:
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          PUBLIO_KEY: ${{ secrets.PUBLIO_KEY }}
+          CODE: ${{ inputs.code }}
+        run: python3 scripts/publio.py connect "$CODE"
+      - name: Enregistrer les jetons chiffrés
+        run: |
+          git config user.name "publio-bot"
+          git config user.email "publio-bot@users.noreply.github.com"
+          git add data/tokens.enc
+          git commit -m "Publio : compte TikTok connecté" && git pull --rebase && git push

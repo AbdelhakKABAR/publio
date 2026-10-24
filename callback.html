@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connexion – Publio Studio</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:12px;padding:12px 20px;font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;margin:6px 8px 6px 0}
+.code{background:#0b0c18;border:1px solid #2a2c4d;border-radius:10px;padding:12px;word-break:break-all;font-family:monospace}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav"><a class="logo" href="index.html"><span class="dot"></span>Publio Studio</a><nav><a href="app.html">Mon espace</a></nav></div></header>
+<main class="wrap doc" id="main"><h1>Connexion…</h1></main>
+<script src="config.js"></script>
+<script>
+const p = new URLSearchParams(location.search);
+const m = document.getElementById('main');
+let expected = null; try { expected = sessionStorage.getItem('publio_state'); } catch (e) {}
+if (p.get('error')) {
+  m.innerHTML = '<h1>Connexion annulée</h1><p></p><a class="btn" href="app.html">Retour</a>';
+  m.querySelector('p').textContent = p.get('error_description') || p.get('error');
+} else if (p.get('code')) {
+  if (expected && p.get('state') !== expected) {
+    m.innerHTML = '<h1>Lien de connexion invalide</h1><p>Recommencez depuis votre espace.</p><a class="btn" href="app.html">Retour</a>';
+  } else {
+    const code = p.get('code');
+    const run = (window.PUBLIO && window.PUBLIO.connectWorkflow) || '#';
+    m.innerHTML = '<h1>Compte TikTok autorisé ✔</h1>' +
+      '<p>Dernière étape : copiez ce code puis lancez « Connecter TikTok » (à faire dans les 5 minutes).</p>' +
+      '<div class="code" id="c"></div><p>' +
+      '<button class="btn" id="copy">Copier le code</button>' +
+      '<a class="btn" href="' + run + '" target="_blank" rel="noopener">Ouvrir « Connecter TikTok »</a></p>';
+    document.getElementById('c').textContent = code;
+    document.getElementById('copy').onclick = () => navigator.clipboard.writeText(code)
+      .then(() => document.getElementById('copy').textContent = 'Copié ✔');
+  }
+} else {
+  m.innerHTML = '<h1>Aucun code reçu</h1><a class="btn" href="app.html">Retour</a>';
+}
+</script>
+</body>
+</html>
