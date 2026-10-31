@@ -1104,5 +1104,12 @@
     "status": "published",
     "publish_id": "v_inbox_file~v2.7702714190284457986",
     "last_error": null
+  },
+  {
+    "time": "2026-10-31T10:30:32+02:00",
+    "video": "queue/videos/savoir-faire.mp4",
+    "status": "published",
+    "publish_id": "v_inbox_file~v2.7702746541013944342",
+    "last_error": null
   }
 ]
