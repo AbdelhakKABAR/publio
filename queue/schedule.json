@@ -1843,6 +1843,11 @@
     "video": "queue/videos/intrus-2026-10-31-12.mp4",
     "caption": "🕵️ TROUVE L'INTRUS : 10 questions, du niveau facile à impossible… attention aux pièges ! Ton score en commentaire 👇 #intrus #quiz #quiztime #piege #culturegenerale #logique #defi #pourtoi",
     "privacy": "SELF_ONLY",
-    "mode": "draft"
+    "mode": "draft",
+    "status": "published",
+    "publish_id": "v_inbox_file~v2.7702780424824702998",
+    "result": "SEND_TO_USER_INBOX",
+    "video_deleted": true,
+    "updated_at": "2026-10-31T10:42:56.572610+00:00"
   }
 ]
