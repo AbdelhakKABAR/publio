@@ -1825,5 +1825,12 @@
     "result": "SEND_TO_USER_INBOX",
     "video_deleted": true,
     "updated_at": "2026-10-31T06:28:51.158172+00:00"
+  },
+  {
+    "time": "2026-10-31T10:30:32+02:00",
+    "video": "queue/videos/savoir-faire.mp4",
+    "caption": "⚜️ Quiz France : le savoir-faire de chaque ville ! Porcelaine, parfum, couteaux, cristal… 10 questions du niveau facile à impossible. Tu arrives jusqu'où ? Donne ton score en commentaire 👇 #quiz #france #villesdefrance #artisanat #madeinfrance #culturegenerale #quiztime #defi",
+    "privacy": "SELF_ONLY",
+    "mode": "draft"
   }
 ]
