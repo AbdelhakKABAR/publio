@@ -1,0 +1,34 @@
+name: Publier les vidéos
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # toutes les 15 minutes
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publio
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publier les vidéos à l'heure
+        env:
+          TIKTOK_CLIENT_KEY: ${{ secrets.TIKTOK_CLIENT_KEY }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          PUBLIO_KEY: ${{ secrets.PUBLIO_KEY }}
+          PUBLIO_PRIVACY: ${{ vars.PUBLIO_PRIVACY || 'SELF_ONLY' }}
+        run: python3 scripts/publio.py publish
+      - name: Enregistrer l'état
+        if: always()
+        run: |
+          git config user.name "publio-bot"
+          git config user.email "publio-bot@users.noreply.github.com"
+          git add -A queue data || true
+          git diff --cached --quiet || (git commit -m "Publio : mise à jour de la file" && git pull --rebase && git push)
