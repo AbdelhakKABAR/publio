@@ -1,0 +1,32 @@
+name: Nettoyer l'historique
+
+# Chaque nuit à 3 h (heure de Paris), quand aucune vidéo n'est fabriquée :
+# repart d'un historique neuf d'un seul commit, pour que les anciennes vidéos
+# ne restent pas stockées dans GitHub.
+on:
+  schedule:
+    - cron: "0 1 * * *"   # 1 h UTC = 3 h à Paris (heure d'été), 2 h en hiver
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publio          # même groupe que la publication : jamais en même temps
+  cancel-in-progress: false
+
+jobs:
+  nettoyer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Repartir d'un seul commit
+        run: |
+          git config user.name "publio-bot"
+          git config user.email "publio-bot@users.noreply.github.com"
+          git checkout --orphan propre
+          git add -A
+          git commit -q -m "Publio : état au $(date -u +%Y-%m-%d)"
+          git push -f origin propre:main
