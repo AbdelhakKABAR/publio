@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mon espace – Publio Studio</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;border:0;border-radius:12px;padding:14px 22px;font-size:17px;font-weight:600;cursor:pointer;text-decoration:none}
+.btn.alt{background:#2a2c4d}
+.panel{background:var(--card);border-radius:16px;padding:24px;margin:18px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:8px;border-bottom:1px solid #2a2c4d;text-align:left}
+.tag{padding:2px 8px;border-radius:8px;font-size:12px;background:#2a2c4d}
+.tag.published{background:#1f6f4a}.tag.failed{background:#8a2335}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav"><a class="logo" href="index.html"><span class="dot"></span>Publio Studio</a><nav><a href="app.html">Mon espace</a><a href="privacy.html">Confidentialité</a></nav></div></header>
+<main class="wrap doc">
+  <h1>Mon espace</h1>
+
+  <div class="panel">
+    <h2 style="margin-top:0">1. Connecter mon compte TikTok</h2>
+    <p>Autorisez Publio Studio à publier les vidéos que vous programmez sur votre compte.</p>
+    <a id="login" class="btn" href="#">Se connecter avec TikTok</a>
+    <p class="en">Permissions demandées : profil de base (user.info.basic), envoi et publication de vidéos (video.upload, video.publish).</p>
+  </div>
+
+  <div class="panel">
+    <h2 style="margin-top:0">2. Vidéos programmées</h2>
+    <p>La file d'attente est lue depuis <code>queue/schedule.json</code>. Le robot passe toutes les 15 minutes et publie les vidéos dont l'heure est arrivée.</p>
+    <table><thead><tr><th>Heure</th><th>Légende</th><th>Confidentialité</th><th>Statut</th></tr></thead><tbody id="rows"><tr><td colspan="4">Chargement…</td></tr></tbody></table>
+  </div>
+</main>
+<footer class="wrap foot"><p>© 2026 Publio Studio · <a href="terms.html">Conditions</a> · <a href="privacy.html">Confidentialité</a></p></footer>
+<script src="config.js"></script>
+<script>
+const C = window.PUBLIO || {};
+const state = Math.random().toString(36).slice(2);
+try { sessionStorage.setItem('publio_state', state); } catch (e) {}
+const url = 'https://www.tiktok.com/v2/auth/authorize/?' + new URLSearchParams({
+  client_key: C.clientKey || '', response_type: 'code',
+  scope: 'user.info.basic,video.upload,video.publish',
+  redirect_uri: C.redirectUri, state });
+document.getElementById('login').href = url;
+
+fetch('queue/schedule.json', {cache: 'no-store'}).then(r => r.json()).then(list => {
+  const rows = document.getElementById('rows');
+  if (!list.length) { rows.innerHTML = '<tr><td colspan="4">Aucune vidéo programmée.</td></tr>'; return; }
+  rows.innerHTML = '';
+  list.slice().sort((a,b) => a.time.localeCompare(b.time)).forEach(q => {
+    const tr = document.createElement('tr');
+    const st = q.status || 'pending';
+    [new Date(q.time).toLocaleString('fr-FR'), (q.caption || '').slice(0, 60), q.privacy || 'par défaut']
+      .forEach(t => { const td = document.createElement('td'); td.textContent = t; tr.appendChild(td); });
+    const td = document.createElement('td'); const s = document.createElement('span');
+    s.className = 'tag ' + st; s.textContent = {pending:'En attente', published:'Publiée', failed:'Échec'}[st] || st;
+    td.appendChild(s); tr.appendChild(td); rows.appendChild(tr);
+  });
+}).catch(() => { document.getElementById('rows').innerHTML = '<tr><td colspan="4">File indisponible.</td></tr>'; });
+</script>
+</body>
+</html>
